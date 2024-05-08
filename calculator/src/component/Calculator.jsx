@@ -15,8 +15,11 @@ const Calculator = () =>{
     };
 
     const handleCalculate = () =>{
+        if(input!==''|| '+-*/'.includes(input[input.length-1])){
+            setOutput('Error');
+        }
         try{
-            const result = eval(input.replace('x', '*'));
+            const result = eval(input);
             setOutput(result);
         }catch(error){
             setOutput('Error');
@@ -28,7 +31,7 @@ const Calculator = () =>{
             <input type="text" className={styles.inputField} value={input} placeholder="Enter expression" readOnly/>
             <div className={styles.output}>{output}</div>
             <div className={styles.buttons}>
-                {[7,8,9,'+',4,5,6,'-',1,2,3,'x','C',0,'=','/'].map((item)=>(
+                {[7,8,9,'+',4,5,6,'-',1,2,3,'*','C',0,'=','/'].map((item)=>(
                     <button key={item} className={styles.button}
                     onClick={()=>{
                         if(item === '='){handleCalculate();}
