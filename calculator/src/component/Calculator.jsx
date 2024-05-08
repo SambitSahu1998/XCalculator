@@ -15,9 +15,10 @@ const Calculator = () =>{
     };
 
     const handleCalculate = () =>{
-        if(input!==''|| '+-*/'.includes(input[input.length-1])){
+        if (input === '' || '+-x/'.includes(input[input.length - 1])) {
             setOutput('Error');
-        }
+            return;
+          }
         try{
             const result = eval(input);
             setOutput(result);
